@@ -8,9 +8,25 @@ import sklearn
 from sklearn.linear_model import LinearRegression
 # print('success')
 def mlr_test(string="empty"):
+    """
+        mlr_test
+        Arguments:
+            string <string> -- the string that is printed to the user
+    """
     print(string)
 
-def compareMlrResults(col_arr, x_train,x_valid,x_train_valid,y_train,y_valid,p=True):
+def compareMlrResults(col_arr, x_train,x_valid,y_train,y_valid,p=True):
+    """
+        Description: 
+            Find the best MLR model through taking out unique combonations of column names provided by col_arr. 
+        Args:
+            col_arr <list> -- list of column names that could be removed to make the mlr model better in some way (r2, mae, rmse)
+            x_train <pandas df> -- traing x vars
+            x_valid <pandas df> -- valid x vars
+            y_train <pandas df> -- train y outcome
+            y_valid <pandas df> -- valid y outcome 
+            p <bool> -- print details (default true) 
+    """
     r2 = None
     mae = None
     rmse = None
@@ -48,6 +64,17 @@ def compareMlrResults(col_arr, x_train,x_valid,x_train_valid,y_train,y_valid,p=T
     return r2_col
 
 def predict(x_valid, y_valid, mlr):
+    """
+        Desc:
+        runs a trained mlr model on validation data and returns the resulting r2, mae, rmse 
+
+        Args:
+        x_valid <pandas df> -- valid x vars
+        y_valid <pandas df> -- valid y outcome
+        mlr <object> -- from sklearn, this is the mlr model it has already been fitted (trained)
+
+        return <object> -- {r2, mae, rmse}
+    """
     print('----------------Validate--------------')
     # create y predict from our mlr model
     y_pred = mlr.predict(x_valid)  
