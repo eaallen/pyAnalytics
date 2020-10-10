@@ -22,3 +22,4 @@ def CorrelationTable(df, width, height):
     plt.title('Correlation HeatMap',fontsize=14)
     plt.show()  
     return
+ 
