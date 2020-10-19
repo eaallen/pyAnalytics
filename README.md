@@ -14,3 +14,8 @@ sys.path.append('c:\\path\\to\\local\\repo')
 import mlr
 mlr.help()
 ```
+### Notes
+When I get an idea, i write it down. 
+#### Collinearity 
+Automate removing dataset Collinearity of vars. 
+perhaps have an option to remove form dataset or flag for possible problem. 
