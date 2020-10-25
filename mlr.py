@@ -128,7 +128,7 @@ def runMlr(y_train,y_valid,x_train, x_valid, rm_col_arr, show_summary=False):
     """
     _x_train = x_train.drop(columns=rm_col_arr)
     _x_valid = x_valid.drop(columns=rm_col_arr)
-    mlr = buildMlr(_x_train,_x_valid,y_train,show_summary,rm_col_arr)
+    mlr = buildMlr(_x_train,_x_valid,y_train,rm_col_arr,show_summary)
     print('results after taking out these columns: ')
     print(' '.join(map(str, rm_col_arr)))
     return predict(_x_valid, y_valid, mlr)
@@ -148,7 +148,7 @@ def mlrForTimeSeries(y_train_valid,x_train_valid,x_forecast,arr_col_rmv,show_osl
     """
     x_train_valid = x_train_valid.drop(columns=arr_col_rmv)
     x_forecast = x_forecast.drop(columns=arr_col_rmv)
-    mlr = buildMlr(x_train_valid,x_forecast,y_train_valid,show_osl,arr_col_rmv)
+    mlr = buildMlr(x_train_valid,x_forecast,y_train_valid,arr_col_rmv,show_osl)
     print("\n\n----------------------------------------------")
     y_pred = mlr.predict(x_train_valid)  
     R2 = sklearn.metrics.r2_score(y_train_valid, y_pred)
